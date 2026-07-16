@@ -1,16 +1,14 @@
 <?php
 // =========================================================================
-// PROJECT PLUTONIUM - Database Connection Configuration
-// Optimized for Railway hosting & PHP 7.4 compatibility
+// PROJECT PLUTONIUM - Direct Database Connection (No Variables)
 // =========================================================================
 
-// Read credentials dynamically from Railway environment variables
-// CHANGED: Fallback changed from 'localhost' to '127.0.0.1' to prevent Unix socket errors
-$db_host = getenv('MYSQLHOST') ?: '127.0.0.1';
-$db_user = getenv('MYSQLUSER') ?: 'root';
-$db_pass = getenv('MYSQLPASSWORD') ?: '';
-$db_name = getenv('MYSQLDATABASE') ?: 'plutonium';
-$db_port = getenv('MYSQLPORT') ?: '3306';
+// REPLACE THE STRINGS BELOW WITH YOUR ACTUAL RAILWAY DATABASE CREDENTIALS
+$db_host = 'tokaido.proxy.rlwy.net'; 
+$db_user = 'root';      
+$db_pass = 'IZqgfZjyuCSECsUgszrpAXCzLnWePxal';  
+$db_name = 'railway';  
+$db_port = '21608';      
 
 // --- 1. MySQLi CONNECTION ---
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
@@ -21,7 +19,6 @@ if (!$conn) {
     die("Database Connection failed (MySQLi): " . mysqli_connect_error());
 }
 
-// Set charset
 mysqli_set_charset($conn, "utf8mb4");
 
 // --- 2. PDO CONNECTION ---
