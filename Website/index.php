@@ -24,7 +24,7 @@ include 'global.php';
 </div>
 <style>
 .jumbotron {
-    background-color: #008000;
+    background-color: #5a0080;
     margin-bottom: 0;
     min-height: 5%;
     background-repeat: no-repeat;

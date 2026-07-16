@@ -7,12 +7,12 @@ require_once "db.php";
 <html lang="en">
     <head>
   <meta charset="UTF-8">
-  <meta name="description" content="we are all about 2011, 2013 block gaem">
+  <meta name="description" content="2013 roblox">
   <meta name="keywords" content="Roblox, Old Roblox, Old Roblox Revival, Novetus">
-  <meta name="author" content="Project Vapor">
+  <meta name="author" content="Project Plutonium">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<title>Project Vapor</title>
+<title>Plutonium</title>
 <link rel="icon" type="image/png" href="<?php echo SMALLLOGOPATH;?>" />
 
 <style>
