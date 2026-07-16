@@ -18,7 +18,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <h1 class="my-5 mx-auto">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</h1>
     <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
+        <a href="reset-password.php" class="btn btn-warning">reset ya password</a>
     </p>
 </body>
 <?php include 'footer.php';?>

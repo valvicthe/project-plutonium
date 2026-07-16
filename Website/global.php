@@ -33,7 +33,7 @@ require_once "db.php";
 <link href="<?php echo SITEDOMAIN;?>/fontawesomelib/css/all.css" rel="stylesheet">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img src="<?php echo FULLLOGOPATH;?>" width="100"  alt="Vapor">
+  <img src="<?php echo FULLLOGOPATH;?>" width="100"  alt="Plutonium">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

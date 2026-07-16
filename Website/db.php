@@ -1,15 +1,14 @@
 <?php
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'YOURUSERNAME');
-define('DB_PASSWORD', 'YOURPASSWORD');
-define('DB_NAME', 'YOURDBNAME');
- 
-/* Attempt to connect to MySQL database */
-try{
-    $pdo = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e){
-    die("ERROR: Could not connect. " . $e->getMessage());
+// Reads credentials dynamically from Railway's environment
+$db_host = getenv('MYSQLHOST') ?: 'localhost';
+$db_user = getenv('MYSQLUSER') ?: 'root';
+$db_pass = getenv('MYSQLPASSWORD') ?: '';
+$db_name = getenv('MYSQLDATABASE') ?: 'plutonium';
+$db_port = getenv('MYSQLPORT') ?: '3306';
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name, $db_port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
