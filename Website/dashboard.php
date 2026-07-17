@@ -49,10 +49,10 @@ include 'sidebar.php';
                                 </div>
                             </div>
                             <div class="card-body p-3 glass-panel">
-                                <h5 class="fw-bold text-white mb-1 text-truncate">Sword Fights on the Heights IV</h5>
+                                <h5 class="fw-bold text-white mb-1 text-truncate">Test Game 1</h5>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted small">By Telamon</span>
-                                    <span class="badge bg-dark-subtle text-light rounded-pill px-2">Active</span>
+                                    <span class="text-muted small">By Unknown</span>
+                                    <span class="badge bg-dark-subtle text-light rounded-pill px-2">Offline</span>
                                 </div>
                             </div>
                         </div>
@@ -69,9 +69,9 @@ include 'sidebar.php';
                                 </div>
                             </div>
                             <div class="card-body p-3 glass-panel">
-                                <h5 class="fw-bold text-white mb-1 text-truncate">Crossroads</h5>
+                                <h5 class="fw-bold text-white mb-1 text-truncate">Test Game 2</h5>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted small">By System</span>
+                                    <span class="text-muted small">By ok</span>
                                     <span class="badge bg-dark-subtle text-light rounded-pill px-2">Active</span>
                                 </div>
                             </div>
