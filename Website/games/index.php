@@ -69,11 +69,10 @@ $games = [
     <div class="row mb-4 align-items-center">
         <div class="col-md-6 text-center text-md-left">
             <h1 class="fw-bold text-white mb-1">Discover Games</h1>
-            <p class="text-secondary-emphasis">Jump into classic 2013 experiences with friends</p>
         </div>
         <div class="col-md-6 text-center text-md-right">
-            <button class="btn btn-purple px-4 py-2" onclick="alert('Host client integration coming soon!')">
-                <i class="fas fa-plus-circle mr-2"></i> Host a Server
+            <button class="btn btn-purple px-4 py-2" onclick="alert('coming soon!')">
+                <i class="fas fa-plus-circle mr-2"></i> Create a Place...
             </button>
         </div>
     </div>
