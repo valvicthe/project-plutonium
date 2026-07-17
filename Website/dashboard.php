@@ -9,6 +9,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 include 'global.php';
+include 'sidebar.php';
 ?>
 
 <div class="custom-dashboard-wrapper py-5">
@@ -18,7 +19,7 @@ include 'global.php';
         <div class="welcome-banner p-4 p-md-5 mb-5 rounded-4 position-relative overflow-hidden shadow-lg">
             <div class="position-relative z-index-2">
                 <h1 class="welcome-text display-5 fw-black mb-0">
-                    Hello, <?php echo htmlspecialchars($_SESSION["username"]); ?>!
+                    haii <?php echo htmlspecialchars($_SESSION["username"]); ?>!
                 </h1>
             </div>
             <!-- Decorative background elements -->
