@@ -5,7 +5,7 @@ require_once "db.php";
 require_once "settings.php"; 
 
 // Fetch the latest alert from the database
-$alert_stmt = $pdo->query("SELECT message FROM alert ORDER BY id DESC LIMIT 1");
+$alert_stmt = $pdo->query("SELECT message FROM alerts ORDER BY id DESC LIMIT 1");
 $alert_row = $alert_stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
