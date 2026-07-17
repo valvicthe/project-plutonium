@@ -1,5 +1,5 @@
 <?php
- // Initialize the session
+// Initialize the session
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["username"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                $username_err = "Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
     } elseif(strlen(trim($_POST["password"])) < 8){
-        $password_err = "Password must have atleast 8 characters.";
+        $password_err = "Password must have at least 8 characters.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -87,8 +87,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 // Redirect to login page
                 header("location: ../login");
+                exit;
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                $confirm_password_err = "Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
@@ -96,53 +97,117 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
- 
     // Close connection
     unset($pdo);
 }
 ?>
- 
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <script type="text/javascript">
-function change (el) {
-var max_len = 10;
-if (el.value.length > max_len) {
-el.value = el.value.substr(0, max_len);
-}
-document.getElementById('char_cnt').innerHTML = el.value.length;
-document.getElementById('chars_left').innerHTML = max_len - el.value.length;
-return true;
-}
-</script>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            
-            <div class="form-group">
-                <label>Username (10 Characters Limit)</label>
-                <input type="text" maxlength="10" cols=100 rows=20 onkeyup="change(this);" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Form Card Wrapper -->
+            <div class="card auth-card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-body p-5">
+                    
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-white mb-1">Create Account</h2>
+                        <p class="text-secondary-emphasis small">Please fill this form to join Project Plutonium.</p>
+                    </div>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        
+                        <!-- Username Field -->
+                        <div class="form-group mb-3">
+                            <label class="form-label small text-muted">Username (10 Character Limit)</label>
+                            <input type="text" maxlength="10" name="username" class="form-control auth-input <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo htmlspecialchars($username); ?>">
+                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        </div>    
+                        
+                        <!-- Password Field -->
+                        <div class="form-group mb-3">
+                            <label class="form-label small text-muted">Password</label>
+                            <input type="password" name="password" class="form-control auth-input <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo htmlspecialchars($password); ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        </div>
+                        
+                        <!-- Confirm Password Field -->
+                        <div class="form-group mb-4">
+                            <label class="form-label small text-muted">Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control auth-input <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo htmlspecialchars($confirm_password); ?>">
+                            <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="form-group d-flex align-items-center justify-content-between mb-4">
+                            <input type="submit" class="btn btn-purple px-4 py-2" value="Sign Up">
+                            <input type="reset" class="btn btn-outline-secondary btn-sm px-3 py-2" value="Reset Fields">
+                        </div>
+                        
+                        <hr class="border-secondary-light my-3">
+                        
+                        <p class="text-center small text-muted mb-0">
+                            Already have an account? <a href="<?php echo SITEDOMAIN;?>/login" class="text-purple-accent text-decoration-none">Login here</a>.
+                        </p>
+                    </form>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-            </div>
-            <p>Already have an account? <a href="<?php echo SITEDOMAIN;?>/login">Login here</a>.</p>
-        </form>
+        </div>
     </div>
-    <?php include '../footer.php';?>
-</body>
-</html>
+</div>
+
+<style>
+/* Modern Form Styles */
+.auth-card {
+    background-color: #121218 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.auth-input {
+    background-color: #0d0d12 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input:focus {
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15) !important;
+}
+
+/* Fix browser invalid state text drop down */
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+    background-image: none !important;
+}
+
+.text-purple-accent {
+    color: #a855f7 !important;
+}
+
+.text-secondary-emphasis {
+    color: #b3b3cb !important;
+}
+
+.border-secondary-light {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-purple {
+    background-color: #6b21a8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px;
+}
+
+.btn-purple:hover {
+    background-color: #581c87 !important;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+</style>
+
+<?php include '../footer.php'; ?>

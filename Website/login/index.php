@@ -1,5 +1,5 @@
 <?php
- // Initialize the session
+// Initialize the session
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -62,6 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Redirect user to welcome page
                             header("location: ../dashboard.php");
+                            exit;
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -72,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $login_err = "Invalid username or password.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                $login_err = "Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
@@ -83,40 +84,119 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     unset($pdo);
 }
-
 ?>
- 
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
 
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Form Card Wrapper -->
+            <div class="card auth-card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-body p-5">
+                    
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-white mb-1">Welcome Back</h2>
+                        <p class="text-secondary-emphasis small">Please fill in your credentials to login.</p>
+                    </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <!-- Global Login Error Alert -->
+                    <?php 
+                    if(!empty($login_err)){
+                        echo '<div class="alert alert-danger border-0 text-center small py-2 mb-4 rounded-3">' . $login_err . '</div>';
+                    }        
+                    ?>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        
+                        <!-- Username Field -->
+                        <div class="form-group mb-3">
+                            <label class="form-label small text-muted">Username</label>
+                            <input type="text" name="username" class="form-control auth-input <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo htmlspecialchars($username); ?>">
+                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        </div>    
+                        
+                        <!-- Password Field -->
+                        <div class="form-group mb-4">
+                            <label class="form-label small text-muted">Password</label>
+                            <input type="password" name="password" class="form-control auth-input <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        </div>
+                        
+                        <!-- Action Button -->
+                        <div class="form-group mb-4">
+                            <input type="submit" class="btn btn-purple w-100 py-2 fw-semibold" value="Login">
+                        </div>
+                        
+                        <hr class="border-secondary-light my-3">
+                        
+                        <p class="text-center small text-muted mb-0">
+                            Don't have an account? <a href="<?php echo SITEDOMAIN;?>/register" class="text-purple-accent text-decoration-none">Sign up now</a>.
+                        </p>
+                    </form>
+
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="<?php echo SITEDOMAIN;?>/register">Sign up now</a>.</p>
-        </form>
+        </div>
     </div>
-    
-    <?php include '../footer.php';?>
-</body>
-</html>
+</div>
+
+<style>
+/* Synchronized Form Customization */
+.auth-card {
+    background-color: #121218 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.auth-input {
+    background-color: #0d0d12 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input:focus {
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15) !important;
+}
+
+/* Validation Style Adjustments */
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+    background-image: none !important;
+}
+
+.text-purple-accent {
+    color: #a855f7 !important;
+}
+
+.text-secondary-emphasis {
+    color: #b3b3cb !important;
+}
+
+.border-secondary-light {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-purple {
+    background-color: #6b21a8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-purple:hover {
+    background-color: #581c87 !important;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.15) !important;
+    color: #ea868f !important;
+}
+</style>
+
+<?php include '../footer.php'; ?>
