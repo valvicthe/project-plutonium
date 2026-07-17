@@ -85,56 +85,17 @@ include 'sidebar.php';
                 <div class="friends-panel rounded-4 p-4 h-100 shadow">
                     <div class="d-flex align-items-center justify-content-between mb-4 border-bottom border-secondary-subtle pb-3">
                         <h4 class="fw-bold text-white mb-0">Friends</h4>
-                        <span class="badge online-badge rounded-pill px-2 py-1">2 Online</span>
+                        <span class="badge online-badge rounded-pill px-2 py-1">0 Online</span>
                     </div>
 
                     <!-- Friends List -->
                     <div class="friends-list d-flex flex-column gap-3">
-                        
                         <!-- Friend Item (Online) -->
                         <div class="friend-item d-flex align-items-center p-2 rounded-3 transition-base">
-                            <div class="position-relative me-3">
-                                <div class="friend-avatar rounded-circle d-flex align-items-center justify-content-center text-white fw-bold bg-secondary">
-                                    A
-                                </div>
-                                <span class="status-indicator bg-success position-absolute bottom-0 end-0 rounded-circle border border-2 border-dark"></span>
-                            </div>
                             <div class="flex-grow-1">
-                                <h6 class="text-white mb-0 fw-semibold">Admin</h6>
-                                <p class="text-success small mb-0">In Game: Crossroads</p>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-icon text-muted"><i class="fas fa-comment"></i></a>
-                        </div>
-
-                        <!-- Friend Item (Online) -->
-                        <div class="friend-item d-flex align-items-center p-2 rounded-3 transition-base">
-                            <div class="position-relative me-3">
-                                <div class="friend-avatar rounded-circle d-flex align-items-center justify-content-center text-white fw-bold bg-secondary">
-                                    P
-                                </div>
-                                <span class="status-indicator bg-success position-absolute bottom-0 end-0 rounded-circle border border-2 border-dark"></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-white mb-0 fw-semibold">Player123</h6>
-                                <p class="text-muted small mb-0">Online</p>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-icon text-muted"><i class="fas fa-comment"></i></a>
-                        </div>
-
-                        <!-- Friend Item (Offline) -->
-                        <div class="friend-item d-flex align-items-center p-2 rounded-3 transition-base opacity-50">
-                            <div class="position-relative me-3">
-                                <div class="friend-avatar rounded-circle d-flex align-items-center justify-content-center text-white fw-bold bg-dark">
-                                    G
-                                </div>
-                                <span class="status-indicator bg-secondary position-absolute bottom-0 end-0 rounded-circle border border-2 border-dark"></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="text-white mb-0 fw-semibold">Guest001</h6>
-                                <p class="text-muted small mb-0">Offline</p>
+                                <h6 class="text-white mb-0 fw-semibold">No friends?</h6>
                             </div>
                         </div>
-
                     </div>
                     
                     <button class="btn btn-dark w-100 mt-4 rounded-3 text-muted border-0 py-2 custom-hover">Find More Friends</button>
