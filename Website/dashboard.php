@@ -11,267 +11,300 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 include 'global.php';
 ?>
 
-<div class="container my-4 roblox-dashboard-wrapper">
-    <div class="row g-4">
-        
-        <!-- Left Column: Main Roblox Content Stream -->
-        <div class="col-lg-9">
+<!-- 2016 Layout Wrapper -->
+<div class="rbx-dark-theme pt-4 pb-5">
+    <div class="container rbx-container">
+        <div class="row">
             
-            <!-- Authentic Roblox User Profile Banner Panel -->
-            <div class="roblox-home-header p-4 mb-4 rounded d-flex align-items-center gap-4">
-                <div class="roblox-avatar-frame position-relative shadow-sm flex-shrink-0">
-                    <!-- Standard Roblox Headshot placeholder frame matching theme colors -->
-                    <div class="roblox-avatar-placeholder d-flex align-items-center justify-content-center fw-bold text-white uppercase">
-                        <?php echo substr(htmlspecialchars($_SESSION["username"]), 0, 1); ?>
-                    </div>
-                </div>
-                <div class="roblox-header-meta">
-                    <h1 class="fw-bold text-white mb-1 roblox-username-title">
-                        Hello, <?php echo htmlspecialchars($_SESSION["username"]); ?>!
-                    </h1>
-                </div>
-            </div>
-
-            <!-- Roblox Carousel Header Category: Recently Played / Discover -->
-            <div class="d-flex align-items-center justify-content-between mb-3 px-1">
-                <h3 class="roblox-row-title text-white mb-0">Recently Played</h3>
-                <a href="/games" class="text-purple-accent small text-decoration-none fw-semibold roblox-link-hover">See All <i class="fas fa-chevron-right ms-1 small"></i></a>
-            </div>
-
-            <!-- Mini Game Grid Loop matching layout rules -->
-            <div class="row g-3 mb-4">
-                <div class="col-6 col-sm-4 col-md-3">
-                    <div class="card roblox-game-tile border-0 overflow-hidden h-100">
-                        <div class="roblox-tile-thumb position-relative">
-                            <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="card-img-top img-fluid" alt="Game">
-                            <div class="tile-hover-overlay d-flex align-items-center justify-content-center">
-                                <button class="btn btn-roblox-play-sm shadow-sm" onclick="alert('Launching standard client wrapper...')"><i class="fas fa-play"></i></button>
-                            </div>
+            <!-- 2016 Left Navigation Sidebar -->
+            <div class="col-lg-2 d-none d-lg-block">
+                <div class="rbx-left-nav">
+                    <!-- Nav User Info -->
+                    <a href="#" class="rbx-nav-user d-flex align-items-center mb-4 text-decoration-none">
+                        <div class="rbx-nav-avatar me-2 d-flex align-items-center justify-content-center text-white fw-bold">
+                            <?php echo substr(htmlspecialchars($_SESSION["username"]), 0, 1); ?>
                         </div>
-                        <div class="card-body p-2">
-                            <h6 class="text-white text-truncate fw-semibold mb-0 small">Sword Fights on the Heights IV</h6>
-                            <span class="text-secondary-emphasis font-xs">By Telamon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-sm-4 col-md-3">
-                    <div class="card roblox-game-tile border-0 overflow-hidden h-100">
-                        <div class="roblox-tile-thumb position-relative">
-                            <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="card-img-top img-fluid" alt="Game">
-                            <div class="tile-hover-overlay d-flex align-items-center justify-content-center">
-                                <button class="btn btn-roblox-play-sm shadow-sm" onclick="alert('Launching standard client wrapper...')"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body p-2">
-                            <h6 class="text-white text-truncate fw-semibold mb-0 small">Crossroads</h6>
-                            <span class="text-secondary-emphasis font-xs">By Roblox</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-sm-4 col-md-3 d-none d-sm-block">
-                    <div class="card roblox-game-tile border-0 overflow-hidden h-100">
-                        <div class="roblox-tile-thumb position-relative">
-                            <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="card-img-top img-fluid" alt="Game">
-                            <div class="tile-hover-overlay d-flex align-items-center justify-content-center">
-                                <button class="btn btn-roblox-play-sm shadow-sm" onclick="alert('Launching standard client wrapper...')"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body p-2">
-                            <h6 class="text-white text-truncate fw-semibold mb-0 small">Natural Disaster Survival</h6>
-                            <span class="text-secondary-emphasis font-xs">By Stickmasterluke</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-sm-4 col-md-3 d-none d-md-block">
-                    <div class="card roblox-game-tile border-0 overflow-hidden h-100">
-                        <div class="roblox-tile-thumb position-relative">
-                            <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="card-img-top img-fluid" alt="Game">
-                            <div class="tile-hover-overlay d-flex align-items-center justify-content-center">
-                                <button class="btn btn-roblox-play-sm shadow-sm" onclick="alert('Launching standard client wrapper...')"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body p-2">
-                            <h6 class="text-white text-truncate fw-semibold mb-0 small">Work at a Pizza Place</h6>
-                            <span class="text-secondary-emphasis font-xs">By Dued1</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Right Column: Sidebar Feed System -->
-        <div class="col-lg-3">
-            
-            <!-- Quick Actions Structural Panel -->
-            <div class="roblox-sidebar-panel p-3 rounded mb-4">
-                <h5 class="text-white fw-bold small text-uppercase mb-3 tracking-wide">Account Actions</h5>
-                <div class="d-grid gap-2">
-                    <a href="/reset-password.php" class="btn btn-roblox-secondary btn-sm text-start py-2">
-                        <i class="fas fa-key me-2 text-muted"></i> Change Password
+                        <span class="text-white fw-bold text-truncate" style="font-size: 15px;">
+                            <?php echo htmlspecialchars($_SESSION["username"]); ?>
+                        </span>
                     </a>
-                    <a href="/logout.php" class="btn btn-danger-roblox btn-sm text-start py-2">
-                        <i class="fas fa-sign-out-alt me-2 text-muted"></i> Sign Out Session
-                    </a>
+                    
+                    <!-- Nav Links -->
+                    <ul class="list-unstyled rbx-nav-list">
+                        <li><a href="/dashboard.php" class="active"><i class="fas fa-home fw-bold"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                        <li><a href="#"><i class="fas fa-user-friends"></i> Friends</a></li>
+                        <li><a href="#"><i class="fas fa-male"></i> Avatar</a></li>
+                        <li><a href="#"><i class="fas fa-box"></i> Inventory</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt"></i> Trade</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Groups</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> Forum</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Sidebar Friends List Stream Module Mockup -->
-            <div class="roblox-sidebar-panel p-3 rounded">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="text-white fw-bold small text-uppercase mb-0 tracking-wide">Friends Online</h5>
-                    <span class="badge bg-purple-accent-opaque font-xs text-purple-accent px-2 py-1">0 / 0</span>
-                </div>
-                <div class="py-4 text-center">
-                    <div class="text-muted mb-2"><i class="fas fa-users fa-2x opacity-40"></i></div>
-                    <p class="text-secondary-emphasis font-xs mb-0">No friends online right now.</p>
+            <!-- Main Content Area -->
+            <div class="col-lg-10">
+                <div class="row">
+                    
+                    <!-- Middle Column: Status, Feed, Games -->
+                    <div class="col-md-8">
+                        <h1 class="rbx-page-title mb-3">Hello, <?php echo htmlspecialchars($_SESSION["username"]); ?>!</h1>
+                        
+                        <!-- 2016 Status Update Box -->
+                        <div class="rbx-panel rbx-status-box mb-4 d-flex align-items-center">
+                            <div class="rbx-status-avatar d-none d-sm-flex align-items-center justify-content-center me-3">
+                                <?php echo substr(htmlspecialchars($_SESSION["username"]), 0, 1); ?>
+                            </div>
+                            <input type="text" class="form-control rbx-input me-3" placeholder="What are you up to?">
+                            <button class="btn rbx-btn-secondary px-4">Share</button>
+                        </div>
+
+                        <!-- 2016 Recently Played -->
+                        <div class="d-flex justify-content-between align-items-end mb-2">
+                            <h3 class="rbx-section-title mb-0">Recently Played</h3>
+                            <a href="#" class="rbx-link-blue small">See All</a>
+                        </div>
+                        
+                        <div class="row g-3 mb-4">
+                            <!-- Game Card 1 -->
+                            <div class="col-6 col-sm-4">
+                                <div class="rbx-game-card">
+                                    <div class="rbx-game-thumb">
+                                        <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="img-fluid w-100 h-100" alt="Game">
+                                    </div>
+                                    <div class="rbx-game-info p-2">
+                                        <div class="rbx-game-title text-truncate">Work at a Pizza Place</div>
+                                        <div class="rbx-game-creator text-truncate">By Dued1</div>
+                                        <div class="rbx-game-stats mt-1 d-flex align-items-center">
+                                            <i class="fas fa-thumbs-up text-success me-1" style="font-size: 11px;"></i> <span style="font-size: 11px; color: #b8b8b8;">92%</span>
+                                            <i class="fas fa-user ms-2 me-1" style="font-size: 11px; color: #b8b8b8;"></i> <span style="font-size: 11px; color: #b8b8b8;">12K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Game Card 2 -->
+                            <div class="col-6 col-sm-4">
+                                <div class="rbx-game-card">
+                                    <div class="rbx-game-thumb">
+                                        <img src="https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png" class="img-fluid w-100 h-100" alt="Game">
+                                    </div>
+                                    <div class="rbx-game-info p-2">
+                                        <div class="rbx-game-title text-truncate">Natural Disaster Survival</div>
+                                        <div class="rbx-game-creator text-truncate">By Stickmasterluke</div>
+                                        <div class="rbx-game-stats mt-1 d-flex align-items-center">
+                                            <i class="fas fa-thumbs-up text-success me-1" style="font-size: 11px;"></i> <span style="font-size: 11px; color: #b8b8b8;">88%</span>
+                                            <i class="fas fa-user ms-2 me-1" style="font-size: 11px; color: #b8b8b8;"></i> <span style="font-size: 11px; color: #b8b8b8;">8K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2016 Feed -->
+                        <h3 class="rbx-section-title mb-2">My Feed</h3>
+                        <div class="rbx-panel p-3">
+                            <div class="d-flex mb-3 pb-3 border-bottom border-dark">
+                                <div class="rbx-feed-avatar me-3 d-flex align-items-center justify-content-center fw-bold">S</div>
+                                <div>
+                                    <div>
+                                        <a href="#" class="rbx-text-white fw-bold text-decoration-none">System</a> 
+                                        <span class="rbx-text-light" style="font-size: 14px;">Welcome to the new dashboard! Feel free to explore.</span>
+                                    </div>
+                                    <div class="rbx-text-muted mt-1" style="font-size: 12px;">Just now</div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="#" class="rbx-link-blue small">Load More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Friends & Ads -->
+                    <div class="col-md-4 mt-4 mt-md-0">
+                        <div class="d-flex justify-content-between align-items-end mb-2">
+                            <h3 class="rbx-section-title mb-0">Friends (0)</h3>
+                            <a href="#" class="rbx-link-blue small">See All</a>
+                        </div>
+                        <div class="rbx-panel p-3 text-center mb-4 rbx-text-muted" style="font-size: 14px;">
+                            You don't have any friends online right now.
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-end mb-2">
+                            <h3 class="rbx-section-title mb-0">Favorites</h3>
+                            <a href="#" class="rbx-link-blue small">See All</a>
+                        </div>
+                        <div class="rbx-panel p-3 text-center rbx-text-muted" style="font-size: 14px;">
+                            No favorite places yet.
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 
 <style>
-/* --- Roblox Dashboard Styling Variables --- */
-
-.roblox-dashboard-wrapper {
-    background-color: #0d0d12;
+/* 
+   2016 Flat Dark Theme
+   Uses solid colors, 3px border-radius, and specific font weights
+*/
+body {
+    background-color: #232527 !important; /* Authentic 2016 Dark Mode background */
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif; /* 2016 standard font */
 }
 
-/* Profile Display Module */
-.roblox-home-header {
-    background-color: #19191f;
-    border: 1px solid #2f2f3d;
+.rbx-dark-theme {
+    background-color: #232527;
+    min-height: 100vh;
+    color: #F2F4F5;
 }
 
-.roblox-avatar-placeholder {
-    width: 72px;
-    height: 72px;
-    background-color: #2c2c38;
-    border-radius: 50%;
-    border: 3px solid #6b21a8;
-    font-size: 1.8rem;
-    color: #ffffff;
+.rbx-container {
+    max-width: 1024px !important;
 }
 
-.roblox-username-title {
-    font-size: 1.65rem;
-    letter-spacing: -0.3px;
-}
-
-/* Category Row Controls */
-.roblox-row-title {
-    font-size: 1.2rem;
+/* Page Typography */
+.rbx-page-title {
+    font-size: 28px;
     font-weight: 700;
+    color: #F2F4F5;
 }
-
-.text-purple-accent {
-    color: #a855f7 !important;
+.rbx-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #F2F4F5;
 }
-
-.roblox-link-hover:hover {
-    color: #c084fc !important;
-    text-decoration: underline !important;
+.rbx-text-white { color: #FFFFFF !important; }
+.rbx-text-light { color: #BDC1C6 !important; }
+.rbx-text-muted { color: #8F959C !important; }
+.rbx-link-blue { 
+    color: #00A2FF !important; 
+    text-decoration: none;
 }
+.rbx-link-blue:hover { text-decoration: underline; }
 
-/* Roblox Horizontal Grid Tiles */
-.roblox-game-tile {
-    background-color: #19191f !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    transition: transform 0.2s;
+/* 2016 Left Navigation */
+.rbx-left-nav {
+    padding-right: 15px;
 }
-
-.roblox-game-tile:hover {
-    transform: translateY(-3px);
-    border-color: rgba(168, 85, 247, 0.3) !important;
-}
-
-.roblox-tile-thumb {
-    aspect-ratio: 1 / 1;
-    background-color: #121218;
-    overflow: hidden;
-}
-
-.roblox-tile-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Hover play interaction layer */
-.tile-hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.roblox-game-tile:hover .tile-hover-overlay {
-    opacity: 1;
-}
-
-.btn-roblox-play-sm {
-    background-color: #0074e8 !important;
-    color: #ffffff !important;
-    border: none !important;
-    width: 36px;
-    height: 36px;
+.rbx-nav-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #393b3d;
     border-radius: 50%;
-    font-size: 0.85rem;
+}
+.rbx-nav-list li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    color: #BDC1C6;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    transition: background 0.1s, color 0.1s;
+}
+.rbx-nav-list li a:hover {
+    background-color: #393b3d;
+    color: #F2F4F5;
+}
+.rbx-nav-list li a.active {
+    background-color: #393b3d;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.rbx-nav-list li a i {
+    width: 24px;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 10px;
 }
 
-/* Sidebar Utilities */
-.roblox-sidebar-panel {
-    background-color: #19191f;
-    border: 1px solid #2f2f3d;
+/* 2016 Flat Panels */
+.rbx-panel {
+    background-color: #393b3d;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.3);
 }
 
-.tracking-wide {
-    letter-spacing: 0.5px;
+/* Status Box */
+.rbx-status-box {
+    padding: 12px;
+}
+.rbx-status-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #232527;
+    border-radius: 50%;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+.rbx-input {
+    background-color: #232527 !important;
+    border: 1px solid #4f5459 !important;
+    border-radius: 3px !important;
+    color: #F2F4F5 !important;
+    font-size: 15px;
+    padding: 10px 12px;
+}
+.rbx-input:focus {
+    border-color: #00A2FF !important;
+    box-shadow: none !important;
+}
+.rbx-btn-secondary {
+    background-color: #4f5459 !important;
+    color: #FFF !important;
+    border: none !important;
+    border-radius: 3px !important;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 16px;
+}
+.rbx-btn-secondary:hover {
+    background-color: #63686d !important;
 }
 
-.font-xs {
-    font-size: 0.75rem;
+/* 2016 Game Cards */
+.rbx-game-card {
+    background-color: #393b3d;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.3);
+    overflow: hidden;
+    transition: transform 0.1s;
+    cursor: pointer;
+}
+.rbx-game-card:hover {
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.5);
+}
+.rbx-game-thumb {
+    aspect-ratio: 1/1;
+    background-color: #232527;
+}
+.rbx-game-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F2F4F5;
+}
+.rbx-game-creator {
+    font-size: 12px;
+    color: #8F959C;
 }
 
-.text-secondary-emphasis {
-    color: #b3b3cb !important;
+/* Feed Elements */
+.rbx-feed-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #232527;
+    border-radius: 50%;
+    color: #BDC1C6;
+    font-size: 20px;
 }
-
-.text-success-glow {
-    color: #4ade80 !important;
-}
-
-/* Structural Button overrides matching Roblox UI system */
-.btn-roblox-secondary {
-    background-color: #2c2c38 !important;
-    color: #ffffff !important;
-    border: 1px solid #3f3f52 !important;
-}
-.btn-roblox-secondary:hover {
-    background-color: #353544 !important;
-}
-
-.btn-danger-roblox {
-    background-color: rgba(220, 53, 69, 0.1) !important;
-    color: #ea868f !important;
-    border: 1px solid rgba(220, 53, 69, 0.2) !important;
-}
-.btn-danger-roblox:hover {
-    background-color: rgba(220, 53, 69, 0.2) !important;
-}
-
-.bg-purple-accent-opaque {
-    background-color: rgba(168, 85, 247, 0.15);
+.border-dark {
+    border-color: #232527 !important;
 }
 </style>
 
