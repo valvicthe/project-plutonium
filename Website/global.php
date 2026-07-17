@@ -20,7 +20,16 @@ require_once "settings.php";
         .navbar-plutonium { background-color: #0a0a0d !important; border-bottom: 1px solid rgba(144, 0, 255, 0.15); z-index: 1050; }
         
         /* Alert & Sidebar CSS included here so it's global */
-        .alert-banner { background-color: #ff9900; color: #000; text-align: center; padding: 8px; font-weight: bold; border-bottom: 1px solid #cc7a00; }
+        .alert-banner {
+    background-color: #ff9900;
+    color: #ffffff !important; /* Forces text to white */
+    text-align: center;        /* Centers text */
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #cc7a00;
+    width: 100%;
+    z-index: 1040;             /* Keeps it above other elements */
+}
         .sidebar { height: 100vh; width: 200px; position: fixed; top: 56px; left: 0; background-color: #0a0a0d; border-right: 1px solid rgba(144, 0, 255, 0.15); padding: 20px 10px; z-index: 1000; }
         .sidebar a { color: rgba(255, 255, 255, 0.7); display: block; padding: 10px; text-decoration: none; }
         .sidebar a:hover { color: #a855f7; padding-left: 15px; }
