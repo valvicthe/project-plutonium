@@ -2,10 +2,10 @@
 // Initialize the session
 session_start();
 
-// global.php handles DOCTYPE, head, navbar, database connection, and opening body/assets
-include 'global.php'; 
+// FIXED: Added "../" to step out of the games folder and find global.php in the root directory
+include '../global.php'; 
 
-// Classic 2013 Roblox games array (Easy to transition to a SQL query later!)
+// Classic 2013 Roblox games array
 $games = [
     [
         "id" => 1,
@@ -23,7 +23,7 @@ $games = [
         "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png",
         "playing" => rand(5, 20),
         "visits" => "3.4M+",
-        "year" => "2018"
+        "year" => "2013"
     ],
     [
         "id" => 3,
@@ -32,7 +32,7 @@ $games = [
         "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png",
         "playing" => rand(3, 15),
         "visits" => "2.1M+",
-        "year" => "2017"
+        "year" => "2013"
     ],
     [
         "id" => 4,
@@ -84,13 +84,11 @@ $games = [
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                 <div class="card game-card border-0 shadow-lg rounded-4 overflow-hidden h-100">
                     
-                    <!-- Thumbnail wrapper with hover effect -->
                     <div class="game-thumb-wrapper position-relative">
                         <img src="<?php echo $game['thumbnail']; ?>" class="card-img-top game-thumb" alt="<?php echo htmlspecialchars($game['title']); ?>">
                         <span class="badge badge-year position-absolute"><?php echo $game['year']; ?></span>
                     </div>
 
-                    <!-- Card Body -->
                     <div class="card-body p-4 d-flex flex-column justify-content-between">
                         <div>
                             <h5 class="card-title text-white fw-bold text-truncate mb-1">
@@ -101,7 +99,6 @@ $games = [
                             </p>
                         </div>
 
-                        <!-- Stats & Action Footer -->
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="small text-muted">
@@ -126,38 +123,30 @@ $games = [
 </div>
 
 <style>
-/* Game Card & Layout Styles */
 .game-card {
     background-color: #121218 !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
-
 .game-card:hover {
     transform: translateY(-5px);
     border-color: rgba(168, 85, 247, 0.4) !important;
 }
-
-/* Thumbnail Styling */
 .game-thumb-wrapper {
     background-color: #1a1a24;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-
 .game-thumb {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
-
 .game-card:hover .game-thumb {
     transform: scale(1.05);
 }
-
-/* Badge Styling */
 .badge-year {
     top: 10px;
     right: 10px;
@@ -169,51 +158,33 @@ $games = [
     backdrop-filter: blur(4px);
     border: 1px solid rgba(168, 85, 247, 0.3);
 }
-
-/* Custom Accents */
-.text-purple-accent {
-    color: #a855f7 !important;
-}
-
-.text-secondary-emphasis {
-    color: #b3b3cb !important;
-}
-
+.text-purple-accent { color: #a855f7 !important; }
+.text-secondary-emphasis { color: #b3b3cb !important; }
 .text-success-glow {
     color: #4ade80 !important;
     text-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
 }
-
-/* Custom Purple Button Variations */
 .btn-purple {
     background-color: #6b21a8 !important;
     color: white !important;
     border: none !important;
     border-radius: 8px;
-    transition: background 0.2s;
 }
-
-.btn-purple:hover {
-    background-color: #581c87 !important;
-}
-
+.btn-purple:hover { background-color: #581c87 !important; }
 .btn-purple-outline {
     border: 1px solid #6b21a8 !important;
     color: #c084fc !important;
     background: transparent !important;
     border-radius: 8px;
-    transition: all 0.2s;
 }
-
 .btn-purple-outline:hover {
     background-color: #6b21a8 !important;
     color: white !important;
-    border-color: #6b21a8 !important;
 }
-
-.rounded-4 {
-    border-radius: 1rem !important;
-}
+.rounded-4 { border-radius: 1rem !important; }
 </style>
 
-<?php include 'footer.php'; ?>
+<?php 
+// FIXED: Added "../" here too so it finds footer.php in the root directory
+include '../footer.php'; 
+?>
