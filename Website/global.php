@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>Plutonium</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo SMALLLOGOPATH;?>" />
+    <link class="rounded" rel="icon" type="image/png" href="<?php echo SMALLLOGOPATH;?>" />
 
     <!-- Bootstrap 4 & FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -31,23 +31,13 @@ if (session_status() === PHP_SESSION_NONE) {
             height: 100%; 
         }
         body {
-            background-color: #0b0b0f; /* Dark sleek fallback */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
+            background-color: #000000 !important;
             color: #f8f9fa;
-        }
-        
-        /* Apply background only on wider screens to save mobile data/processing */
-        @media screen and (min-width: 500px) {
-            body {
-                background-image: url(<?php echo SITEDOMAIN;?>/img/background.png);
-            }
         }
 
         /* Modern Dark Navbar Styling */
         .navbar-plutonium {
-            background-color: #121218 !important;
+            background-color: #0a0a0d !important;
             border-bottom: 1px solid rgba(144, 0, 255, 0.15);
         }
         .navbar-plutonium .nav-link {
@@ -55,10 +45,10 @@ if (session_status() === PHP_SESSION_NONE) {
             transition: color 0.2s;
         }
         .navbar-plutonium .nav-link:hover {
-            color: #a855f7 !important; /* Glow/purple accent on hover */
+            color: #a855f7 !important;
         }
         .dropdown-menu-dark {
-            background-color: #1a1a24;
+            background-color: #0d0d12;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .dropdown-menu-dark .dropdown-item {
@@ -97,7 +87,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Navigation Links -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>">Home</a>
+                    <!-- Home goes to dashboard if logged in, otherwise landing page -->
+                    <a class="nav-link" href="<?php echo (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) ? SITEDOMAIN . '/dashboard.php' : SITEDOMAIN; ?>">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo SITEDOMAIN;?>/games.php">Games</a>
@@ -112,17 +103,17 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a class="nav-link" href="<?php echo SITEDOMAIN;?>/forum.php">Forum</a>
                 </li>
                 
-                <?php if (isset($_SESSION['loggedin']) &&$_SESSION['loggedin'] === true): ?>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="far fa-user mr-1 text-purple"></i> <?php echo htmlspecialchars($_SESSION["username"]); ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">Messages</a>
-                            <a class="dropdown-item" href="#">Friends</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings.php">Settings</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages.php">Messages</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/friends.php">Friends</a>
                             <div class="dropdown-divider dropdown-divider-dark"></div>
-                            <a class="dropdown-item" href="#">Develop</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/develop.php">Develop</a>
                         </div>
                     </li>
                 <?php endif; ?>
@@ -130,12 +121,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!-- Auth Actions / Profile Control -->
             <div class="d-flex align-items-center">
-                <?php if (isset($_SESSION['loggedin']) &&$_SESSION['loggedin'] === true): ?>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                     <a href="<?php echo SITEDOMAIN;?>/logout.php" class="btn btn-outline-danger btn-sm px-3" role="button">Logout</a>
                 <?php else: ?>
-                    <a href="<?php echo SITEDOMAIN;?>/register" class="btn btn-purple btn-sm px-3 mr-2" role="button">Register</a>
+                    <a href="<?php echo SITEDOMAIN;?>/register.php" class="btn btn-purple btn-sm px-3 mr-2" role="button">Register</a>
                     <span class="text-muted mr-2">or</span>
-                    <a href="<?php echo SITEDOMAIN;?>/login" class="btn btn-outline-light btn-sm px-3" role="button">Login</a>
+                    <a href="<?php echo SITEDOMAIN;?>/login.php" class="btn btn-outline-light btn-sm px-3" role="button">Login</a>
                 <?php endif; ?>
             </div>
         </div>
