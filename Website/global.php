@@ -91,16 +91,16 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a class="nav-link" href="<?php echo (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) ? SITEDOMAIN . '/dashboard.php' : SITEDOMAIN; ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/games.php">Games</a>
+                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/games">Games</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/browse.php">Browse</a>
+                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/browse">Browse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/groups.php">Groups</a>
+                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/groups">Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/forum.php">Forum</a>
+                    <a class="nav-link" href="<?php echo SITEDOMAIN;?>/forums">Forums</a>
                 </li>
                 
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
@@ -109,11 +109,11 @@ if (session_status() === PHP_SESSION_NONE) {
                             <i class="far fa-user mr-1 text-purple"></i> <?php echo htmlspecialchars($_SESSION["username"]); ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings.php">Settings</a>
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages.php">Messages</a>
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/friends.php">Friends</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings">Account Settings</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages">Messages</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/friends">Friends</a>
                             <div class="dropdown-divider dropdown-divider-dark"></div>
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/develop.php">Develop</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/develop">Develop</a>
                         </div>
                     </li>
                 <?php endif; ?>
@@ -124,9 +124,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                     <a href="<?php echo SITEDOMAIN;?>/logout.php" class="btn btn-outline-danger btn-sm px-3" role="button">Logout</a>
                 <?php else: ?>
-                    <a href="<?php echo SITEDOMAIN;?>/register.php" class="btn btn-purple btn-sm px-3 mr-2" role="button">Register</a>
+                    <a href="<?php echo SITEDOMAIN;?>/register" class="btn btn-purple btn-sm px-3 mr-2" role="button">Register</a>
                     <span class="text-muted mr-2">or</span>
-                    <a href="<?php echo SITEDOMAIN;?>/login.php" class="btn btn-outline-light btn-sm px-3" role="button">Login</a>
+                    <a href="<?php echo SITEDOMAIN;?>/login" class="btn btn-outline-light btn-sm px-3" role="button">Login</a>
                 <?php endif; ?>
             </div>
         </div>

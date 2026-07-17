@@ -11,7 +11,7 @@ $games = [
         "id" => 1,
         "title" => "Sword Fights on the Heights IV",
         "creator" => "Telamon",
-        "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png", // Replace with custom local thumb if wanted
+        "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png",
         "playing" => rand(2, 12),
         "visits" => "1.2M+",
         "year" => "2013"
@@ -23,7 +23,7 @@ $games = [
         "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png",
         "playing" => rand(5, 20),
         "visits" => "3.4M+",
-        "year" => "2013"
+        "year" => "2018"
     ],
     [
         "id" => 3,
@@ -32,7 +32,7 @@ $games = [
         "thumbnail" => "https://images.rbxcdn.com/978000673ba7f27b7c259b13996f0e47.png",
         "playing" => rand(3, 15),
         "visits" => "2.1M+",
-        "year" => "2013"
+        "year" => "2017"
     ],
     [
         "id" => 4,
