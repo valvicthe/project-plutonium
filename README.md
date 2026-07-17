@@ -1,6 +1,6 @@
 ![PlutoniumLogo](https://github.com/valvicthe/project-plutonium/blob/main/Website/img/logo.png?raw=true)
 
-===========================================================================================================
+========================================================================================
 
 Thanks to these amazing people who contributed to the website:
 ---------------
