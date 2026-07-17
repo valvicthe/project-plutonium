@@ -4,6 +4,7 @@ session_start();
 
 // FIXED: Added "../" to step out of the games folder and find global.php in the root directory
 include '../global.php'; 
+include '../sidebar.php';
 
 // Classic 2013 Roblox games array
 $games = [
