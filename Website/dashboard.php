@@ -31,7 +31,7 @@ include 'global.php';
             <div class="col-lg-8">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h3 class="fw-bold text-white mb-0 d-flex align-items-center">
-                        <i class="fas fa-gamepad me-2 accent-text"></i> Recently Played
+                        <i class="me-2 accent-text"></i> Recently Played
                     </h3>
                     <a href="#" class="btn btn-outline-accent btn-sm rounded-pill px-3">View All</a>
                 </div>
