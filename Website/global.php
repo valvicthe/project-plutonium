@@ -1,6 +1,5 @@
 <?php
 // global.php
-// Ensure session and DB are initialized
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once "db.php"; 
 require_once "settings.php"; 
@@ -20,16 +19,12 @@ require_once "settings.php";
         body { background-color: #000000 !important; color: #f8f9fa; padding-top: 56px; }
         .navbar-plutonium { background-color: #0a0a0d !important; border-bottom: 1px solid rgba(144, 0, 255, 0.15); z-index: 1050; }
         
-        /* Alert Banner */
         .alert-banner { background-color: #ff9900; color: #ffffff !important; text-align: center; padding: 10px; font-weight: bold; border-bottom: 1px solid #cc7a00; width: 100%; z-index: 1040; }
-        
-        /* Sidebar */
         .sidebar { height: 100vh; width: 200px; position: fixed; top: 56px; left: 0; background-color: #0a0a0d; border-right: 1px solid rgba(144, 0, 255, 0.15); padding: 20px 10px; z-index: 1000; }
         .sidebar a { color: rgba(255, 255, 255, 0.7); display: block; padding: 10px; text-decoration: none; }
         .sidebar a:hover { color: #a855f7; padding-left: 15px; }
         .has-sidebar { margin-left: 200px; padding: 20px; }
         
-        /* Dropdown & Currency */
         .dropdown-menu-dark { background-color: #0d0d12; border: 1px solid rgba(255, 255, 255, 0.08); }
         .dropdown-item { color: #fff !important; }
         .dropdown-item:hover { background-color: #a855f7; }
@@ -49,8 +44,6 @@ require_once "settings.php";
             </ul>
             <ul class="navbar-nav ml-auto align-items-center">
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): 
-                    // Fetch dynamic Robux and Tix
-                    // Ensure your users table has 'robux' and 'tix' columns
                     $stmt = $pdo->prepare("SELECT robux, tix FROM users WHERE id = :id");
                     $stmt->execute(['id' => $_SESSION['id']]);
                     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -65,7 +58,7 @@ require_once "settings.php";
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo htmlspecialchars($_SESSION["username"]); ?>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings">Settings</a>
                             <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages">Messages</a>
                             <div class="dropdown-divider"></div>
