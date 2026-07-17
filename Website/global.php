@@ -1,30 +1,31 @@
 <?php
-// global.php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once "db.php"; 
 require_once "settings.php"; 
+
+// --- AUTO-LOGIN COOKIE LOGIC ---
+if (!isset($_SESSION['loggedin']) && isset($_COOKIE['remember_me'])) {
+    $stmt = $pdo->prepare("SELECT id, username FROM users WHERE remember_token = :token");
+    $stmt->execute(['token' => $_COOKIE['remember_me']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plutonium</title>
-    
-    <link rel="icon" type="image/png" href="<?php echo SMALLLOGOPATH;?>" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link href="<?php echo SITEDOMAIN;?>/fontawesomelib/css/all.css" rel="stylesheet">
-    
     <style>
         body { background-color: #000000 !important; color: #f8f9fa; padding-top: 56px; }
-        .navbar-plutonium { background-color: #0a0a0d !important; border-bottom: 1px solid rgba(144, 0, 255, 0.15); z-index: 1050; }
-        
-        .alert-banner { background-color: #ff9900; color: #ffffff !important; text-align: center; padding: 10px; font-weight: bold; border-bottom: 1px solid #cc7a00; width: 100%; z-index: 1040; }
-        .sidebar { height: 100vh; width: 200px; position: fixed; top: 56px; left: 0; background-color: #0a0a0d; border-right: 1px solid rgba(144, 0, 255, 0.15); padding: 20px 10px; z-index: 1000; }
-        .sidebar a { color: rgba(255, 255, 255, 0.7); display: block; padding: 10px; text-decoration: none; }
-        .sidebar a:hover { color: #a855f7; padding-left: 15px; }
+        .navbar-plutonium { background-color: #0a0a0d !important; border-bottom: 1px solid rgba(144, 0, 255, 0.15); }
+        .sidebar { height: 100vh; width: 200px; position: fixed; top: 56px; left: 0; background-color: #0a0a0d; border-right: 1px solid rgba(144, 0, 255, 0.15); padding: 20px 10px; }
         .has-sidebar { margin-left: 200px; padding: 20px; }
-        
         .dropdown-menu-dark { background-color: #0d0d12; border: 1px solid rgba(255, 255, 255, 0.08); }
         .dropdown-item { color: #fff !important; }
         .dropdown-item:hover { background-color: #a855f7; }
@@ -33,26 +34,19 @@ require_once "settings.php";
     </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-plutonium navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<?php echo SITEDOMAIN;?>"><img src="<?php echo FULLLOGOPATH;?>" height="35" alt="Plutonium"></a>
+        <a class="navbar-brand" href="<?php echo SITEDOMAIN;?>">Plutonium</a>
         <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="<?php echo SITEDOMAIN; ?>">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo SITEDOMAIN;?>/games">Games</a></li>
-            </ul>
             <ul class="navbar-nav ml-auto align-items-center">
-                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): 
+                <?php if (isset($_SESSION['loggedin'])): 
                     $stmt = $pdo->prepare("SELECT robux, tix FROM users WHERE id = :id");
                     $stmt->execute(['id' => $_SESSION['id']]);
                     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $current_robux = $user ? $user['robux'] : 0;
-                    $current_tix = $user ? $user['tix'] : 0;
                 ?>
                     <li class="nav-item">
-                        <span class="robux-display"><?php echo number_format($current_robux); ?> R$</span>
-                        <span class="tix-display"><?php echo number_format($current_tix); ?> Tix</span>
+                        <span class="robux-display"><?php echo number_format($user['robux'] ?? 0); ?> R$</span>
+                        <span class="tix-display"><?php echo number_format($user['tix'] ?? 0); ?> Tix</span>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,9 +54,7 @@ require_once "settings.php";
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings">Settings</a>
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages">Messages</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="<?php echo SITEDOMAIN;?>/logout.php">Logout</a>
+                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/logout.php">Logout</a>
                         </div>
                     </li>
                 <?php else: ?>
