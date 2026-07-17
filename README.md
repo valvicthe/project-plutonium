@@ -14,7 +14,7 @@ Plutonium is always updated!
 
 What is Plutonium?
 ---------------
-Plutonium is a roblox private server that is aiming to bring back older versions of ROBLOX. The Website is https://projvap.cf/.
+Plutonium is a roblox private server that is aiming to bring back older versions of ROBLOX. The Website is https://plutonium.up.railway.app/
 
 Facts about Plutonium
 ---------------
