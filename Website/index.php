@@ -14,8 +14,11 @@ include 'global.php';
 <div class="container my-5">
     <!-- Hero Jumbotron Section -->
     <div class="jumbotron p-5 text-white rounded-4 shadow-lg mb-4 text-center text-sm-start">
-        <h1 class="display-4 fw-bold">Project Plutonium</h1>
-        <p class="lead opacity-75">A transparent, community-driven 2013 Roblox revival</p>
+        <!-- REPLACED TITLE WITH DYNAMIC LOGO -->
+        <div class="mb-3">
+            <img src="<?php echo FULLLOGOPATH;?>" class="hero-logo" alt="Project Plutonium">
+        </div>
+        <p class="lead opacity-75">tweny thirteen</p>
     </div>
 
     <!-- Content Grid -->
@@ -31,6 +34,7 @@ include 'global.php';
                 <div class="alert alert-warning border-0 bg-warning-subtle text-warning-emphasis rounded-3 mb-0">
                     <h5 class="fw-bold mb-1">Play Nice</h5>
                     <p class="small mb-0">To keep this space fun for everyone, please respect the community. No malicious attacks, DDOS attempts, or inappropriate content.</p>
+                    <p class="small mb-0">To play Plutonium you must be Thirteen or over.</p>
                 </div>
             </div>
         </div>
@@ -49,6 +53,14 @@ include 'global.php';
 .jumbotron {
     background: linear-gradient(135deg, #400060 0%, #150024 100%);
     border: 1px solid rgba(144, 0, 255, 0.15);
+}
+
+/* Ensure logo remains crisp and doesn't overflow container width */
+.hero-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px; /* Adjust this height threshold if you want the logo larger/smaller */
+    object-fit: contain;
 }
 
 .text-purple-accent {
