@@ -52,23 +52,32 @@ require_once "settings.php";
                 <li class="nav-item"><a class="nav-link" href="<?php echo SITEDOMAIN;?>/games">Games</a></li>
             </ul>
             <ul class="navbar-nav ml-auto align-items-center">
-                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                    <li class="nav-item"><span class="robux-display">1,234 R$</span></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo htmlspecialchars($_SESSION["username"]); ?>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings">Settings</a>
-                            <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages">Messages</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="<?php echo SITEDOMAIN;?>/logout.php">Logout</a>
-                        </div>
-                    </li>
-                <?php else: ?>
-                    <li class="nav-item"><a href="<?php echo SITEDOMAIN;?>/login" class="nav-link">Login</a></li>
-                <?php endif; ?>
-            </ul>
+    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): 
+        // Fetch the user's actual balance
+        $stmt = $pdo->prepare("SELECT robux FROM users WHERE id = :id");
+        $stmt->execute(['id' => $_SESSION['id']]); // Ensure your session stores 'id'
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $current_robux = $user ? $user['robux'] : 0;
+    ?>
+        <li class="nav-item">
+            <!-- Use number_format to make it look nice (e.g., 1,000) -->
+            <span class="robux-display"><?php echo number_format($current_robux); ?> R$</span>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo htmlspecialchars($_SESSION["username"]); ?>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
+                <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/settings">Settings</a>
+                <a class="dropdown-item" href="<?php echo SITEDOMAIN;?>/messages">Messages</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="<?php echo SITEDOMAIN;?>/logout.php">Logout</a>
+            </div>
+        </li>
+    <?php else: ?>
+        <li class="nav-item"><a href="<?php echo SITEDOMAIN;?>/login" class="nav-link">Login</a></li>
+    <?php endif; ?>
+</ul>
         </div>
     </div>
 </nav>
