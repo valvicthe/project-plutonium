@@ -1,7 +1,7 @@
 <?php
 // sidebar.php
 // Fetch the latest alert
-$alert_stmt = $pdo->query("SELECT message FROM alert ORDER BY id DESC LIMIT 1");
+$alert_stmt = $pdo->query("SELECT message FROM alerts ORDER BY id DESC LIMIT 1");
 $alert_row = $alert_stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
