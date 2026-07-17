@@ -1,6 +1,6 @@
 <?php
-//Shit i made that makes the site cleaner and easier to set up - Flarf
-define("SITENAME","Project Plutonium");
+//Shit i made that makes the site cleaner and easier to set up 
+define("SITENAME","Plutonium");
 define("CURRENCYNAME","Robux");
 define("SITEDOMAIN","https://plutonium.up.railway.app/");
 define("SMALLLOGOPATH","https://plutonium.up.railway.app/img/logosmall.png");
